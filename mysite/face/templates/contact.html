@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Оставить отзыв{% endblock %}
+
+{% block text_header %}Оставить отзыв{% endblock %}
+
+{% block content %}
+<form method="post" action="{% url 'contact' %}" class="black-text">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" title="Коммент появится после того как админ его заапрувит">Отправить комментарий</button>
+</form>
+
+{% for comment in comments %}
+<div id="comment">
+  <div id="comment-name">{{ comment.name }}</div>
+  <div id="comment-text">{{ comment.text }}</div>
+  <div id="comment-created_at">Дата: {{ comment.created_at }}</div>
+</div>
+{% endfor %}
+
+{% endblock %}
