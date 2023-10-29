@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 {% load static %}
+<link rel="icon" type="image/png" href="{% static 'images/resume-icon.png' %}">
+<link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
 <main>
 <html>
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <title>{% block title %}Главная страница{% endblock %}</title>
+    <title>{% block title %}Home page{% endblock %}</title>
 </head>
 <body>
     <header class="main-header">
         <div class="header-content">
-            <h1>{% block text_header %}Главная страница{% endblock %}</h1>
+            <h1 class="title">{% block text_header %}Home page{% endblock %}</h1>
         </div>
     </header>
 
     <div class="button-container">
-        <a href="/"><button class="button">Рузюме</button></a>
-        <a href="/shorten_link/"><button class="button">Проекты</button></a>
-        <a href="/contact/"><button class="button">Оставить отзыв</button></a>
+        <a href="/"><button class="button">Resume</button></a>
+        <a href="/shorten_link/"><button class="button">Projects</button></a>
+        <a href="/contact/"><button class="button">Leave feedback</button></a>
     </div>
 
     <div class="main-content">
@@ -25,7 +27,7 @@
     </div>
 
     <footer class="footer">
-        <p>Телефон: +380981068799<br>
+        <p>Phone number: +380981068799<br>
         Email: porozovivan090@gmail.com</p>
     </footer>
 </body>

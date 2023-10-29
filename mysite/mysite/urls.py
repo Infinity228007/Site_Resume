@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('face.urls')),
+    path('rosetta/', include('rosetta.urls')),
 ]

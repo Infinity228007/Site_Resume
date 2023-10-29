@@ -3,26 +3,21 @@ from .models import Comment
 
 
 class ShortenLinkForm(forms.Form):
-    original_link = forms.URLField(label="Оригинальная ссылка")
+    original_link = forms.URLField(label="Original link")
 
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['name', 'company', 'text']
-        labels = {
-            'name': 'Имя',
-            'company': 'Компания',
-            'text': 'Текст',
-        }
         error_messages = {
             'name': {
-                'required': 'Пожалуйста, введите ваше имя.'
+                'required': 'Please enter your name.'
             },
             'company': {
-                'required': 'Пожалуйста, введите название компании.'
+                'required': 'Please enter your company name.'
             },
             'text': {
-                'required': 'Пожалуйста, введите текст комментария.'
+                'required': 'Please enter comment text.'
             }
         }

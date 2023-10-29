@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Проекты{% endblock %}
+{% block title %}Projects{% endblock %}
 
-{% block text_header %}Проекты{% endblock %}
+{% block text_header %}Projects{% endblock %}
 
 {% block content %}
 
@@ -10,16 +10,62 @@
     label {
         color: white;
     }
+
+    .line {
+        position: relative;
+        background: transparent;
+    }
+
+    .line::before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, white, transparent);
+        bottom: 20px;
+    }
 </style>
-    <h1>Код сайта в GitHub</h1>
-    <a href="https://github.com/Infinity228007/Site_Resume"><button class="button">Перейти в GitHub</button></a>
-    <h1>Введите ссылку для сокращения</h1>
-    <form method="post" action="{% url 'shorten' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Сократить</button>
-    </form>
-    {% if short_link %}
-        <p>Ваша ссылка: <a href="{{ short_link }}">{{ short_link }}</a></p>
-    {% endif %}
+    <div class="site">
+        <h1>Site code in GitHub</h1>
+        <h2>Description: </h2>
+        <p>This project is my virtual portfolio and personal resume page. It is created using modern web technologies
+            and designed to provide an overview of my experience, skills, and projects.</p>
+        <h2>Features:</h2>
+        <ul>
+            <li>Profile: Detailed information about me, my education, and experience.</li>
+            <li>Resume: My up-to-date resume in a convenient format.</li>
+            <li>Projects: A list of projects I've worked on, with descriptions, images, and links to GitHub repositories.</li>
+            <li>Navigation: Page navigation using a menu in the site's header.</li>
+        </ul>
+        <h2>Technologies:</h2>
+        <ul>
+            <li>Django: The foundation of the web application.</li>
+            <li>HTML/CSS: Page layout and styling.</li>
+            <li>JavaScript: Additional interactive elements.</li>
+            <li>GitHub: Code storage and project management.</li>
+        </ul>
+        <h2>Goal: </h2>
+        <p>
+            The goal of this project is to provide a convenient way to showcase my experience and skills to future
+            employers and colleagues, as well as to demonstrate my web development skills.
+        </p>
+        <h2>Project Link:</h2>
+        <a href="https://github.com/Infinity228007/Site_Resume">Visit the project on GitHub</a>
+    </div>
+
+    <div class="line"></div>
+
+    <div class="link">
+        <h1>Enter link to shorten</h1>
+            <form method="post" action="{% url 'shorten' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Reduce</button>
+            </form>
+        {% if short_link %}
+            <p>Your link: <a href="{{ short_link }}">{{ short_link }}</a></p>
+        {% endif %}
+    </div>
 {% endblock %}

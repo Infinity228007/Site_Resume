@@ -1,58 +1,64 @@
 {% extends 'base.html' %}
 
-{% block title %}Резюме{% endblock %}
+{% block title %}Resume{% endblock %}
 
-{% block text_header %}Резюме{% endblock %}
+{% block text_header %}Resume{% endblock %}
 
 {% block content %}
-<h2>Данные:</h2>
-<ul>
-    <li>Телефон: +380981068799</li>
-    <li>Электронная почта: porozovivan090@gmail.com</li>
-    <li>Город: Каменское</li>
-    <li>Дата рождения: 16 декабря 1999 года</li>
-</ul>
+<div class="main-info">
+    <ul>
+        <li>Full name: Porozov Ivan Mikhailovich</li>
+        <li>Phone: +380981068799</li>
+        <li>Email: porozovivan090@gmail.com</li>
+        <li>Date of Birth: December 16, 1999</li>
+    </ul>
+</div>
 
-<h2>Образование:</h2>
-<ul>
-    <li>Университет таможенного дела и финансов (УТДФ), г. Днепр</li>
-    <li>Специальность: Кибербезопасность</li>
-    <li>Завершил обучение в 2021 году после 4 курсов</li>
-</ul>
+<div class="education">
+    <h2>Education:</h2>
+    <ul>
+        <li>Customs and Finance University (UTDF), Dnipro</li>
+        <li>Major: Cybersecurity</li>
+        <li>Completed education in 2021 after 4 years of study</li>
+    </ul>
+</div>
 
-<h2>Опыт работы:</h2>
+<div class="experience">
+<h2>Work Experience:</h2>
+    <p>
+        Automation Testing Engineer at Pecode (from March 2022 to August 2023)
+    </p>
+    <ul>
+        <li>Development and maintenance of automated tests using Python, pytest, request, Selenium, and the os library.</li>
+        <li>Creation of new test cases to ensure comprehensive coverage of application functionality.</li>
+        <li>Execution and monitoring of tests on remote services, including Browserstack and Pipeline.</li>
+        <li>Analysis of testing results and preparation of detailed reports for the development team.</li>
+        <li>Participation in code reviews and collaboration with fellow developers to enhance software quality.</li>
+        <li>Ongoing learning and skill improvement to effectively handle new challenges in a dynamic environment.</li>
+    </ul>
+</div>
+
+<div class="skills">
+    <h2>Skills:</h2>
+    <ul>
+        <li>Programming languages: Python, SQL.</li>
+        <li>Framework: Django.</li>
+        <li>Basic knowledge of HTML, CSS, and JavaScript.</li>
+        <li>Familiarity with Git and version control systems.</li>
+        <li>Proficiency in English (CEFR Level B1).</li>
+        <li>Strong teamwork and quick learning abilities.</li>
+        <li>Excellent analytical and problem-solving skills.</li>
+    </ul>
+</div>
+
+<div class="about-me">
+<h2>About Me:</h2>
 <p>
-    Инженер по автоматизации тестирования в компании Pecode (с марта 2022 года по август 2023 года)
+    I am currently transitioning from the field of testing to Python development, applying my knowledge and skills to
+    create high-quality software. I have a strong command of Python and am eager to learn and professionally grow in a
+    dynamic team. I am open to relocating to any city in Ukraine.
 </p>
-<ul>
-    <li>Разработка и поддержка автоматизированных тестов с использованием Python, pytest, request, Selenium и
-        библиотеки os.</li>
-    <li>Создание новых тестовых случаев для обеспечения полного покрытия функциональности приложений.</li>
-    <li>Запуск и мониторинг тестов на удаленных сервисах, включая Browserstack и Pipeline.</li>
-    <li>Анализ результатов тестирования и подготовка подробных отчетов для команды разработки.</li>
-    <li>Участие в процессе код-ревью и совместной работе с коллегами-разработчиками для улучшения качества
-        программного обеспечения.</li>
-    <li>Постоянное обучение и совершенствование навыков, чтобы эффективно справляться с новыми вызовами в
-        динамичной среде.</li>
-</ul>
-
-<h2>Навыки:</h2>
-<ul>
-    <li>Языки программирования: Python, SQL</li>
-    <li>Фреймворк: Django</li>
-    <li>Базовые знания HTML, CSS и JavaScript</li>
-    <li>Знание Git и систем контроля версий</li>
-    <li>Знание английского языка (уровень B1 по CEFR)</li>
-    <li>Умение работать в команде и хорошая обучаемость</li>
-    <li>Хорошие аналитические и проблемно-ориентированные навыки</li>
-</ul>
-
-<h2>О себе:</h2>
-<p>
-    Ищу возможность перейти из сферы тестирования в сферу разработки на Python и применить свои знания и навыки для
-    создания высококачественного программного обеспечения. У меня крепкое владение Python, и я готов учиться и
-    профессионально развиваться в динамичной команде. Готов к переезду в любой город Украины.
-</p>
+</div>
 
 <a href="admin/"><button class="button"></button></a>
 {% endblock %}
