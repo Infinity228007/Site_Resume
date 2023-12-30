@@ -5,15 +5,19 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 
 from .forms import ShortenLinkForm, CommentForm
-from .models import ShortenedLink, Comment
+from .models import ShortenedLink, Comment, Resume, Headers
 
 
 def index(request):
-    return render(request, "resume.html")
+    resume_data = Resume.objects.first()
+    headers_data = Headers.objects.first()
+    return render(request, 'resume.html', {'resume_data': resume_data, 'headers_data': headers_data})
 
 
 def contact(request):
     comments = Comment.objects.filter(approved=True)
+    resume_data = Resume.objects.first()
+    headers_data = Headers.objects.first()
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -22,20 +26,25 @@ def contact(request):
     else:
         form = CommentForm()
 
-    return render(request, 'contact.html', {'form': form, 'comments': comments})
+    return render(request, 'contact.html', {'form': form, 'comments': comments, 'resume_data': resume_data,
+                                            'headers_data': headers_data})
 
 
 def shorten_link(request):
+    resume_data = Resume.objects.first()
+    headers_data = Headers.objects.first()
     if request.method == 'POST':
         form = ShortenLinkForm(request.POST)
         if form.is_valid():
             original_link = form.cleaned_data['original_link']
             short_link = generate_short_link()
             ShortenedLink.objects.create(original_link=original_link, short_link=short_link)
-            return render(request, 'shortened_link.html', {'short_link': short_link})
+            return render(request, 'shortened_link.html', {'short_link': short_link, 'resume_data': resume_data,
+                                                           'headers_data': headers_data})
     else:
         form = ShortenLinkForm()
-    return render(request, 'shorten_link.html', {'form': form})
+    return render(request, 'shorten_link.html', {'form': form, 'resume_data': resume_data,
+                                                 'headers_data': headers_data})
 
 
 def shorten(request):

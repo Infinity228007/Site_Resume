@@ -1,40 +1,40 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 title{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vm;
 }
 
 body,
 section {
-  background-color: black;
-  margin-left: 150px;
-  margin-right: 150px;
+    background-color: black;
+    margin-left: 150px;
+    margin-right: 150px;
 }
 
 button-container{
-  position: absolute;
-  top: 0;
-  right: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 body {
 }
 
 main {
-  font-family: 'Montserrat', sans-serif;
-  flex: 1;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: relative;
+    font-family: 'Montserrat', sans-serif;
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 200px;
+    padding-right: 200px;
+    position: relative;
 }
 
 .main-box::before {
@@ -48,89 +48,101 @@ main {
 }
 
 h1, h2 {
-  padding: 1rem;
-  color: #F6F1EB;
+    padding: 1rem;
+    color: #F6F1EB;
 }
 
 li,
 p {
-  color: #F6F1EB;
-  padding-left: 10px;
-  padding-right: 10px;
-  line-height: 1.5;
+    color: #F6F1EB;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 1.5;
 }
 
 
 input,
 button {
-  font-family: inherit;
-  line-height: inherit;
-  color: inherit;
-  border: 0;
-  padding: 1rem;
+    font-family: inherit;
+    line-height: inherit;
+    color: inherit;
+    border: 0;
+    padding: 1rem;
 }
 
 input {
-  color: black;
-  box-sizing: border-box;
-  width: 100%;
+    color: black;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 button {
-  text-align: center;
-  margin: 5px;
-  cursor: pointer;
-  flex: 1;
-  background-color: transparent;
-  color: #F6F1EB;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
+    text-align: center;
+    margin: 5px;
+    cursor: pointer;
+    flex: 1;
+    background-color: transparent;
+    color: #F6F1EB;
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
 }
 
 textarea{
-  font-family: inherit;
-  line-height: inherit;
-  color: inherit;
-  border: 0;
-  padding: 1rem;
-  color: black;
-  box-sizing: border-box;
-  width: 100%;
+    font-family: inherit;
+    line-height: inherit;
+    color: inherit;
+    border: 0;
+    padding: 1rem;
+    color: black;
+    box-sizing: border-box;
+    width: 100%;
 }
 
 #comment {
-  color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
 }
 
 .main-header {
-  text-align: center;
+    text-align: center;
 }
 
 .header-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 130px;
-  right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 130px;
+    left: 10px;
+}
+
+.skills {
+    color: #F6F1EB;
+}
+
+.education {
+    color: #F6F1EB;
+}
+
+.experience {
+    color: #F6F1EB;
 }

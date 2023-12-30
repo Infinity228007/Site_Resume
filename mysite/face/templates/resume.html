@@ -1,64 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}Resume{% endblock %}
+{% block title %}{{ headers_data.resume }}{% endblock %}
 
-{% block text_header %}Resume{% endblock %}
+{% block text_header %}{{ headers_data.resume }}{% endblock %}
 
 {% block content %}
 <div class="main-info">
+
     <ul>
-        <li>Full name: Porozov Ivan Mikhailovich</li>
-        <li>Phone: +380981068799</li>
-        <li>Email: porozovivan090@gmail.com</li>
-        <li>Date of Birth: December 16, 1999</li>
+        <li>{{ headers_data.name }}: {{ resume_data.name }}</li>
+        <li>{{ headers_data.phone }}: {{ resume_data.phone }}</li>
+        <li>{{ headers_data.email }}: {{ resume_data.email }}</li>
+        <li>{{ headers_data.date_of_birth }}: {{ resume_data.date_of_birth }}</li>
     </ul>
 </div>
 
 <div class="education">
-    <h2>Education:</h2>
-    <ul>
-        <li>Customs and Finance University (UTDF), Dnipro</li>
-        <li>Major: Cybersecurity</li>
-        <li>Completed education in 2021 after 4 years of study</li>
-    </ul>
+    <h2>{{ headers_data.education }}:</h2>
+    {{ resume_data.education | linebreaks | safe }}
 </div>
 
-<div class="experience">
-<h2>Work Experience:</h2>
-    <p>
-        Automation Testing Engineer at Pecode (from March 2022 to August 2023)
-    </p>
-    <ul>
-        <li>Development and maintenance of automated tests using Python, pytest, request, Selenium, and the os library.</li>
-        <li>Creation of new test cases to ensure comprehensive coverage of application functionality.</li>
-        <li>Execution and monitoring of tests on remote services, including Browserstack and Pipeline.</li>
-        <li>Analysis of testing results and preparation of detailed reports for the development team.</li>
-        <li>Participation in code reviews and collaboration with fellow developers to enhance software quality.</li>
-        <li>Ongoing learning and skill improvement to effectively handle new challenges in a dynamic environment.</li>
-    </ul>
+ <div class="experience">
+    <h2>{{ headers_data.experience }}:</h2>
+    {{ resume_data.work_experience | linebreaks | safe }}
 </div>
 
-<div class="skills">
-    <h2>Skills:</h2>
-    <ul>
-        <li>Programming languages: Python, SQL.</li>
-        <li>Framework: Django.</li>
-        <li>Basic knowledge of HTML, CSS, and JavaScript.</li>
-        <li>Familiarity with Git and version control systems.</li>
-        <li>Proficiency in English (CEFR Level B1).</li>
-        <li>Strong teamwork and quick learning abilities.</li>
-        <li>Excellent analytical and problem-solving skills.</li>
-    </ul>
+ <div class="skills">
+    <h2>{{ headers_data.skills }}:</h2>
+    {{ resume_data.skills | linebreaks | safe }}
 </div>
 
 <div class="about-me">
-<h2>About Me:</h2>
-<p>
-    I am currently transitioning from the field of testing to Python development, applying my knowledge and skills to
-    create high-quality software. I have a strong command of Python and am eager to learn and professionally grow in a
-    dynamic team. I am open to relocating to any city in Ukraine.
-</p>
+    <h2>{{ headers_data.about_me }}:</h2>
+    <p>{{ resume_data.about_me | linebreaks | safe }}</p>
 </div>
+
 
 <a href="admin/"><button class="button"></button></a>
 {% endblock %}
