@@ -133,6 +133,7 @@ textarea{
     position: fixed;
     top: 130px;
     left: 10px;
+    margin-left: 75px;
 }
 
 .skills {

@@ -34,6 +34,8 @@ class Resume(models.Model):
     work_experience = models.TextField()
     skills = models.TextField()
     about_me = models.TextField()
+    description = models.TextField()
+    technologies = models.TextField()
 
     def __str__(self):
         return "Resume"
@@ -66,6 +68,9 @@ class Headers(models.Model):
     change_language = models.CharField(max_length=20)
 
     footer = models.TextField()
+
+    reduce = models.CharField(max_length=20)
+    submit_comment = models.CharField(max_length=20)
 
     def __str__(self):
         return "Header"

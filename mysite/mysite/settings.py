@@ -102,7 +102,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
+
+gettext = lambda s: s
+LANGUAGES = [
+    ('en', gettext('English')),
+    ('uk', gettext('Ukrainian')),
+]
 
 TIME_ZONE = 'UTC'
 
@@ -122,11 +128,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'face/static')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-LANGUAGES = [
-    ('en', 'English'),
-    ('uk', 'Ukrainian'),
-]
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale'),

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <link rel="icon" type="image/png" href="{% static 'images/resume-icon.png' %}">
 <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
 <main>
@@ -17,19 +18,26 @@
     </header>
 
     <div class="button-container">
-        <a href="/"><button class="button">Resume</button></a>
-        <a href="/shorten_link/"><button class="button">Projects</button></a>
-        <a href="/contact/"><button class="button">Leave feedback</button></a>
+        <a href="/"><button class="button">{{ headers_data.resume }}</button></a>
+        <a href="/shorten_link/"><button class="button">{{ headers_data.projects }}</button></a>
+        <a href="/contact/"><button class="button">{{ headers_data.leave_feedback }}</button></a>
+        <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+            <input name="text" type="hidden" value="{{ redirect_to }}">
+
+            <button type="submit" name="language" value="en" {% if LANGUAGE_CODE == "en" %}disabled{% endif %}>
+                EN
+            </button>
+
+            <button type="submit" name="language" value="uk" {% if LANGUAGE_CODE == "uk" %}disabled{% endif %}>
+                UK
+            </button>
+        </form>
     </div>
 
     <div class="main-content">
         {% block content %}{% endblock %}
     </div>
-
-    <footer class="footer">
-        <p>Phone number: +380981068799<br>
-        Email: porozovivan090@gmail.com</p>
-    </footer>
 </body>
 </html>
 </main>
