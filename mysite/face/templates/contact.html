@@ -7,15 +7,22 @@
 {% block content %}
 <form method="post" action="{% url 'contact' %}" class="black-text">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" title="The comment will appear after the admin approves it">{{ headers_data.submit_comment }}</button>
+    <label for="name"><p>{{ headers_data.name }}:</p></label>
+    {{ form.name }}
+    <label for="company"><p>{{ headers_data.company }}:</p></label>
+    {{ form.company }}
+    <label for="text"><p>{{ headers_data.message }}:</p></label>
+    {{ form.text }}
+    <button type="submit" title="The comment will appear after the admin approves it">
+        {{ headers_data.submit_comment }}
+    </button>
 </form>
 
 {% for comment in comments %}
 <div id="comment">
-  <div id="comment-name">{{ comment.name }}</div>
-  <div id="comment-text">{{ comment.text }}</div>
-  <div id="comment-created_at">{{ comment.created_at }}</div>
+    <div id="comment-name">{{ comment.name }}</div>
+    <div id="comment-text">{{ comment.text }}</div>
+    <div id="comment-created_at">{{ comment.created_at }}</div>
 </div>
 {% endfor %}
 

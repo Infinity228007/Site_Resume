@@ -1,55 +1,17 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ headers_data.projects }}{% endblock %}
+{% block title %}{{ headers_data.enter_link_to_shorten }}{% endblock %}
 
-{% block text_header %}{{ headers_data.projects }}{% endblock %}
+{% block text_header %}{{ headers_data.enter_link_to_shorten }}{% endblock %}
 
 {% block content %}
-
-<style>
-    label {
-        color: white;
-    }
-
-    .line {
-        position: relative;
-        background: transparent;
-    }
-
-    .line::before {
-        content: "";
-        position: absolute;
-        top: 20px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(to right, transparent, white, transparent);
-        bottom: 20px;
-    }
-</style>
-    <div class="site">
-        <h1>{{ headers_data.site_code_in_github }}</h1>
-        <h2>{{ headers_data.description }}: </h2>
-        <p>{{ resume_data.description }}</p>
-        <h2>{{ headers_data.technologies }}:</h2>
-        <p>{{ resume_data.technologies | linebreaks | safe }}</p>
-        <h2>{{ headers_data.project_link }}</h2>
-        <a href="https://github.com/Infinity228007/Site_Resume">GitHub</a>
-    </div>
-
-    <div class="line"></div>
-
-    <div class="link">
-        <h1>{{ headers_data.enter_link_to_shorten }}</h1>
-            <form method="post" action="{% url 'shorten' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">{{ headers_data.reduce }}</button>
-            </form>
-        {% if short_link %}
-            <p>Your link: <a href="{{ short_link }}">{{ short_link }}</a></p>
-        {% endif %}
-    </div>
-
-    <div class="line"></div>
+    <form method="post" action="{% url 'shorten' %}">
+        {% csrf_token %}
+        <label for="original_link"><p></p></label>
+        {{ form.original_link }}
+        <button type="submit">{{ headers_data.reduce }}</button>
+    </form>
+    {% if short_link %}
+    <p>Your link: <a href="{{ short_link }}">{{ short_link }}</a></p>
+    {% endif %}
 {% endblock %}

@@ -2,10 +2,13 @@ import random
 import string
 
 from django.http import Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
+from django.shortcuts import render
 
+from .forms import EncryptionForm
 from .forms import ShortenLinkForm, CommentForm
 from .models import ShortenedLink, Comment, Resume, Headers
+from .utils import print_result
 
 
 def index(request):
@@ -48,12 +51,15 @@ def shorten_link(request):
 
 
 def shorten(request):
+    resume_data = Resume.objects.first()
+    headers_data = Headers.objects.first()
     if request.method == 'POST':
         original_link = request.POST.get('original_link')
         if original_link:
             short_link = generate_short_link()
             ShortenedLink.objects.create(original_link=original_link, short_link=short_link)
-            return render(request, 'shortened_link.html', {'short_link': short_link})
+            return render(request, 'shortened_link.html', {'short_link': short_link, 'resume_data': resume_data,
+                                                           'headers_data': headers_data})
     return redirect('shorten_link')
 
 
@@ -71,3 +77,26 @@ def generate_short_link():
         short_link = ''.join(random.choice(characters) for _ in range(6))
         if not ShortenedLink.objects.filter(short_link=short_link).exists():
             return short_link
+
+
+def encryption(request):
+    resume_data = Resume.objects.first()
+    headers_data = Headers.objects.first()
+    if request.method == 'POST':
+        form = EncryptionForm(request.POST)
+        if form.is_valid():
+            key = form.cleaned_data['key']
+            message = form.cleaned_data['message']
+            encrypted_text = print_result(key, message)
+            return redirect('encrypted_text', encrypted_text=encrypted_text)
+    else:
+        form = EncryptionForm()
+
+    return render(request, 'encryption.html', {'form': form, 'resume_data': resume_data, 'headers_data': headers_data})
+
+
+def encrypted_text_view(request, encrypted_text):
+    resume_data = Resume.objects.first()
+    headers_data = Headers.objects.first()
+    return render(request, 'encrypted_text.html', {'encrypted_text': encrypted_text, 'resume_data': resume_data,
+                                                   'headers_data': headers_data})

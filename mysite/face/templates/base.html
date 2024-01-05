@@ -1,6 +1,40 @@
 <!DOCTYPE html>
 {% load static %}
 {% load i18n %}
+<style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content button {
+            background-color: #f9f9f9;
+            border: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+
+        .dropdown-content button:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+</style>
 <link rel="icon" type="image/png" href="{% static 'images/resume-icon.png' %}">
 <link href="https://fonts.cdnfonts.com/css/montserrat" rel="stylesheet">
 <main>
@@ -19,8 +53,16 @@
 
     <div class="button-container">
         <a href="/"><button class="button">{{ headers_data.resume }}</button></a>
-        <a href="/shorten_link/"><button class="button">{{ headers_data.projects }}</button></a>
-        <a href="/contact/"><button class="button">{{ headers_data.leave_feedback }}</button></a>
+        <div class="dropdown">
+        <button>{{ headers_data.actions }}</button>
+        <div class="dropdown-content">
+            <a href="/shorten_link/"><button class="button">{{ headers_data.projects }}</button></a>
+            <a href="/encryption/"><button class="button">{{ headers_data.text_encryption }}</button></a>
+            <a href="/contact/"><button class="button">{{ headers_data.leave_feedback }}</button></a>
+        </div>
+        </div>
+        <a href="https://github.com/Infinity228007/Site_Resume"><button class="button">GitHub</button></a>
+
         <form action="{% url 'set_language' %}" method="post">
             {% csrf_token %}
             <input name="text" type="hidden" value="{{ redirect_to }}">

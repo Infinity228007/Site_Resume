@@ -3,7 +3,7 @@ from .models import Comment
 
 
 class ShortenLinkForm(forms.Form):
-    original_link = forms.URLField(label="Original link")
+    original_link = forms.URLField(label='original_link')
 
 
 class CommentForm(forms.ModelForm):
@@ -21,3 +21,8 @@ class CommentForm(forms.ModelForm):
                 'required': 'Please enter comment text.'
             }
         }
+
+
+class EncryptionForm(forms.Form):
+    key = forms.CharField(label='Key', max_length=100)
+    message = forms.CharField(label='Message', widget=forms.Textarea)

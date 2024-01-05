@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ headers_data.text_encryption }}{% endblock %}
+
+{% block text_header %}{{ headers_data.text_encryption }}{% endblock %}
+
+{% block content %}
+<p>{{ resume_data.encrypt_text | linebreaks | safe }}</p>
+<form method="post" action="{% url 'encryption' %}">
+    {% csrf_token %}
+    <label for="id_key"><p>{{ headers_data.key }}:</p></label>
+    {{ form.key }}
+    <br>
+    <label for="id_message"><p>{{ headers_data.message }}:</p></label>
+    {{ form.message }}
+    <br>
+    <button type="submit">{{ headers_data.encrypt }}</button>
+</form>
+{% endblock %}

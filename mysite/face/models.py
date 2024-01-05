@@ -11,7 +11,7 @@ class ShortenedLink(models.Model):
 
 class Comment(models.Model):
     name = models.CharField(max_length=255)
-    company = models.CharField(max_length=255, default="Anonymous")
+    company = models.CharField(max_length=255)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=False)
@@ -36,6 +36,7 @@ class Resume(models.Model):
     about_me = models.TextField()
     description = models.TextField()
     technologies = models.TextField()
+    encrypt_text = models.TextField()
 
     def __str__(self):
         return "Resume"
@@ -62,7 +63,7 @@ class Headers(models.Model):
     technologies = models.CharField(max_length=20)
     goal = models.CharField(max_length=20)
     project_link = models.CharField(max_length=20)
-    enter_link_to_shorten = models.CharField(max_length=30)
+    enter_link_to_shorten = models.CharField(max_length=50)
 
     leave_feedback = models.CharField(max_length=20)
     change_language = models.CharField(max_length=20)
@@ -71,6 +72,19 @@ class Headers(models.Model):
 
     reduce = models.CharField(max_length=20)
     submit_comment = models.CharField(max_length=20)
+    text_encryption = models.CharField(max_length=20)
+    key = models.CharField(max_length=20)
+    message = models.CharField(max_length=20)
+    encrypt = models.CharField(max_length=35)
+    actions = models.CharField(max_length=35)
+    company = models.CharField(max_length=35)
+    shortened_link = models.CharField(max_length=35)
 
     def __str__(self):
         return "Header"
+
+
+class Encryption(models.Model):
+    key = models.IntegerField()
+    text = models.TextField()
+    ciphertext = models.TextField()

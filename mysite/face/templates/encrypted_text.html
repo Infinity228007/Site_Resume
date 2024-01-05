@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ headers_data.text_encryption }}{% endblock %}
+
+{% block text_header %}{{ headers_data.text_encryption }}{% endblock %}
+
+{% block content %}
+    <p>{{ encrypted_text }}</p>
+{% endblock %}
