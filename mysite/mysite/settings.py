@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-fday44j1rcyy-e5q(ptzz^fy+%le#=!@0bpbscyv)_te&+lw1$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['PorozovIvan.pythonanywhere.com']
 
 # Application definition
 
@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'face.apps.FaceConfig',
-    'rosetta',
 ]
 
 MIDDLEWARE = [
