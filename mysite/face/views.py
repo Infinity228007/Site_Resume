@@ -7,7 +7,7 @@ from django.shortcuts import render
 
 from .forms import EncryptionForm
 from .forms import ShortenLinkForm, CommentForm
-from .models import ShortenedLink, Comment, Resume, Headers
+from .models import ShortenedLink, Comment, Resume, Headers, Encryption
 from .utils import print_result
 
 
@@ -82,13 +82,21 @@ def generate_short_link():
 def encryption(request):
     resume_data = Resume.objects.first()
     headers_data = Headers.objects.first()
+
     if request.method == 'POST':
         form = EncryptionForm(request.POST)
         if form.is_valid():
             key = form.cleaned_data['key']
-            message = form.cleaned_data['message']
-            encrypted_text = print_result(key, message)
-            return redirect('encrypted_text', encrypted_text=encrypted_text)
+            message = form.cleaned_data['text']
+            action = request.POST.get('action')
+            if action == 'encrypt':
+                encrypted_text = print_result(key, message)
+                encryption_entry = Encryption(key=key, text=message, ciphertext=encrypted_text)
+                encryption_entry.save()
+                return redirect('encrypted_text', encrypted_text=encrypted_text)
+            elif action == 'decrypt':
+                decrypt_text = Encryption.objects.filter(key=key, ciphertext=message).first()
+                return redirect('encrypted_text', encrypted_text=decrypt_text)
     else:
         form = EncryptionForm()
 

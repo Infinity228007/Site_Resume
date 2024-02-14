@@ -8,12 +8,13 @@
 <p>{{ resume_data.encrypt_text | linebreaks | safe }}</p>
 <form method="post" action="{% url 'encryption' %}">
     {% csrf_token %}
-    <label for="id_key"><p>{{ headers_data.key }}:</p></label>
+    <p><label for="id_key">{{ headers_data.key }}:</label></p>
     {{ form.key }}
     <br>
-    <label for="id_message"><p>{{ headers_data.message }}:</p></label>
-    {{ form.message }}
+    <p><label for="id_message">{{ headers_data.message }}:</label></p>
+    {{ form.text }}
     <br>
-    <button type="submit">{{ headers_data.encrypt }}</button>
+    <button type="submit" name="action" value="encrypt">{{ headers_data.encrypt }}</button>
+    <button type="submit" name="action" value="decrypt">Decrypt</button>
 </form>
 {% endblock %}

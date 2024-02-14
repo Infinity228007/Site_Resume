@@ -1,5 +1,7 @@
 from django import forms
-from .models import Comment
+from django.core.exceptions import ValidationError
+
+from .models import Comment, Encryption
 
 
 class ShortenLinkForm(forms.Form):
@@ -23,6 +25,17 @@ class CommentForm(forms.ModelForm):
         }
 
 
-class EncryptionForm(forms.Form):
-    key = forms.CharField(label='Key', max_length=100)
-    message = forms.CharField(label='Message', widget=forms.Textarea)
+class EncryptionForm(forms.ModelForm):
+    class Meta:
+        model = Encryption
+        fields = ['key', 'text']
+        widgets = {
+            'key': forms.TextInput(attrs={'class': 'key-input'}),
+            'text': forms.Textarea(attrs={'class': 'text-input', 'cols': 60, 'rows': 10})
+        }
+
+    def clean_key(self):
+        key = self.cleaned_data['key']
+        if type(key) != int:
+            raise ValidationError('Key should be integer')
+        return key

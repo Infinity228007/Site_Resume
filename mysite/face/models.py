@@ -86,5 +86,8 @@ class Headers(models.Model):
 
 class Encryption(models.Model):
     key = models.IntegerField()
-    text = models.TextField()
+    text = models.TextField(blank=True, verbose_name='Message')
     ciphertext = models.TextField()
+
+    def __str__(self):
+        return self.text
