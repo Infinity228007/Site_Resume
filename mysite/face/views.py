@@ -96,7 +96,11 @@ def encryption(request):
                 return redirect('encrypted_text', encrypted_text=encrypted_text)
             elif action == 'decrypt':
                 decrypt_text = Encryption.objects.filter(key=key, ciphertext=message).first()
-                return redirect('encrypted_text', encrypted_text=decrypt_text)
+                if decrypt_text:
+                    return redirect('encrypted_text', encrypted_text=decrypt_text)
+                else:
+                    encrypted_text = print_result(key, message)
+                    return redirect('encrypted_text', encrypted_text=encrypted_text)
     else:
         form = EncryptionForm()
 
