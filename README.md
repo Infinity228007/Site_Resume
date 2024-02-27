@@ -1,4 +1,3 @@
-![image](https://github.com/IvanPorozov/Site_Resume/assets/139009015/4330c505-de3d-4970-8341-5ea17c0bceb3)
 http://porozovivan.pythonanywhere.com/en/
 
 This project was created to show my knowledge and skills in using the Django framework.
