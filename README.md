@@ -5,7 +5,7 @@ This project was created to show my knowledge and skills in using the Django fra
 The site contains information for a potential employer.
 The site implements:
 - multilingual
-## Video
+Video
 https://github.com/IvanPorozov/Site_Resume/assets/139009015/528355e2-c1b8-4d56-950d-71b1a4a65ada
 - link shortener
 https://github.com/IvanPorozov/Site_Resume/assets/139009015/fe769e5f-0db3-43c8-af8e-ba0d7e9ed1e5
